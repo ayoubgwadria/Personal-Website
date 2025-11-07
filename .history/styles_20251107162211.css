@@ -45,7 +45,7 @@ p {
     text-decoration: none;
     border-radius: 50px;
     font-weight: 500;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     cursor: pointer;
     border: none;
     font-family: inherit;
@@ -83,7 +83,7 @@ p {
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
 }
 
 .navbar.scrolled {
@@ -126,7 +126,7 @@ p {
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    transition: color 0.5s ease;
+    transition: color 0.15s ease;
     position: relative;
 }
 
@@ -142,7 +142,7 @@ p {
     width: 0;
     height: 2px;
     background: #667eea;
-    transition: width 0.5s ease;
+    transition: width 0.15s ease;
 }
 
 .nav-link:hover::after {
@@ -181,7 +181,7 @@ p {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
 }
 
@@ -202,7 +202,7 @@ p {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     z-index: 10000;
     min-width: 150px;
     overflow: hidden;
@@ -225,7 +225,7 @@ p {
     border: none;
     text-align: left;
     cursor: pointer;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.15s ease;
     font-size: 14px;
     color: #333;
 }
@@ -326,7 +326,7 @@ p {
     border-radius: 50%;
     color: #667eea;
     text-decoration: none;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -383,7 +383,7 @@ p {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    transition: transform 0.5s ease;
+    transition: transform 0.15s ease;
 }
 
 .profile-img:hover {
@@ -559,7 +559,7 @@ section {
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease;
+    transition: transform 0.15s ease;
 }
 
 .skill-category:hover {
@@ -593,7 +593,7 @@ section {
     padding: 1rem;
     background: #f8f9ff;
     border-radius: 10px;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     cursor: pointer;
 }
 
@@ -607,7 +607,7 @@ section {
     font-size: 2rem;
     margin-bottom: 0.5rem;
     color: #667eea;
-    transition: color 0.5s ease;
+    transition: color 0.15s ease;
 }
 
 .skill-item:hover i {
@@ -635,7 +635,7 @@ section {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -669,7 +669,7 @@ section {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    transition: transform 0.5s ease;
+    transition: transform 0.15s ease;
     border-radius: 10px 10px 0 0;
 }
 
@@ -689,7 +689,7 @@ section {
     justify-content: center;
     gap: 1rem;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.15s ease;
 }
 
 .project-card:hover .project-overlay {
@@ -706,7 +706,7 @@ section {
     border-radius: 50%;
     color: #667eea;
     text-decoration: none;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
 }
 
 .project-link:hover {
@@ -1007,7 +1007,7 @@ section {
     font-size: 1.2rem;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     z-index: 1000;
 }
 
@@ -1287,7 +1287,7 @@ section {
 
 /* Smooth transitions for all interactive elements */
 * {
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
 }
 
 /* Image Modal Popup */
@@ -1301,7 +1301,7 @@ section {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(5px);
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.15s ease;
 }
 
 .image-modal.show {
@@ -1319,7 +1319,7 @@ section {
     transform: translate(-50%, -50%);
     border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    animation: zoomIn 0.5s ease;
+    animation: zoomIn 0.15s ease;
 }
 
 .close-modal {
@@ -1331,7 +1331,7 @@ section {
     font-weight: bold;
     cursor: pointer;
     z-index: 10001;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     width: 60px;
@@ -1388,7 +1388,7 @@ section {
     padding: 15px 20px;
     cursor: pointer;
     border-radius: 50%;
-    transition: all 0.5s ease;
+    transition: all 0.15s ease;
     pointer-events: all;
     backdrop-filter: blur(10px);
 }
