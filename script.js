@@ -1,15 +1,27 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initializeNavigation();
-    initializeScrollAnimations();
-    initializeBackToTop();
-    initializeContactForm();
-    initializeSmoothScrolling();
-    initializeLoadingScreen();
-    initializeParallaxEffect();
-    initializeTypingAnimation();
-    initializeLanguageSelector();
+    // Initialize all functionality, with defensive error handling
+    const initializers = [
+        { name: 'Navigation', fn: initializeNavigation },
+        { name: 'ScrollAnimations', fn: initializeScrollAnimations },
+        { name: 'BackToTop', fn: initializeBackToTop },
+        { name: 'ContactForm', fn: initializeContactForm },
+        { name: 'SmoothScrolling', fn: initializeSmoothScrolling },
+        { name: 'LoadingScreen', fn: initializeLoadingScreen },
+        { name: 'ParallaxEffect', fn: initializeParallaxEffect },
+        { name: 'TypingAnimation', fn: initializeTypingAnimation },
+        { name: 'LanguageSelector', fn: initializeLanguageSelector }
+    ];
+
+    initializers.forEach(init => {
+        try {
+            if (typeof init.fn === 'function') {
+                init.fn();
+            }
+        } catch (err) {
+            console.error(`Error initializing ${init.name}:`, err);
+        }
+    });
 });
 
 // Navigation functionality
@@ -127,6 +139,11 @@ function initializeBackToTop() {
 function initializeContactForm() {
     const contactForm = document.getElementById('contactForm');
     
+    // Contact form not present on this page
+    if (!contactForm) {
+        return;
+    }
+    
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -150,15 +167,19 @@ function initializeContactForm() {
 
         // Simulate form submission
         const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+        const originalText = submitBtn ? submitBtn.textContent : 'Send';
+        if (submitBtn) {
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+        }
 
         setTimeout(() => {
             showNotification('Thank you! Your message has been sent successfully.', 'success');
             contactForm.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
+            if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         }, 2000);
     });
 }
@@ -258,13 +279,30 @@ function initializeLoadingScreen() {
     loadingScreen.innerHTML = '<div class="loader"></div>';
     document.body.appendChild(loadingScreen);
 
+    // Show spinner on load, keep it visible for 1.1s, then fade into site with blur and show language modal
     window.addEventListener('load', () => {
+        const minVisibleMs = 1100; // 1.1 seconds as requested
         setTimeout(() => {
+            // fade out loading spinner
             loadingScreen.classList.add('hidden');
+
+            // apply a subtle blur to the site while modal appears
+            document.body.classList.add('site-blurred');
+
+            // wait a bit for the blur/backdrop to settle, then show language modal
             setTimeout(() => {
-                loadingScreen.remove();
-            }, 500);
-        }, 1000);
+                if (typeof showLanguageModal === 'function') {
+                    showLanguageModal();
+                }
+
+                // remove the loading element after a short delay so transitions complete
+                setTimeout(() => {
+                    if (loadingScreen && loadingScreen.parentNode) {
+                        loadingScreen.remove();
+                    }
+                }, 500);
+            }, 300);
+        }, minVisibleMs);
     });
 }
 
@@ -290,21 +328,10 @@ function initializeParallaxEffect() {
 
 // Typing animation for hero subtitle
 function initializeTypingAnimation() {
-    const subtitle = document.querySelector('.hero-subtitle');
-    const text = subtitle.textContent;
-    subtitle.textContent = '';
-    
-    let i = 0;
-    const typeWriter = () => {
-        if (i < text.length) {
-            subtitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    };
-
-    // Start typing animation after a delay
-    setTimeout(typeWriter, 1500);
+    // Disabled: conflicts with dynamic language switching.
+    // The typing animation would overwrite translations.
+    // If you want typing effect, it should be re-triggered after language selection.
+    return;
 }
 
 // Skill bars animation
@@ -1001,36 +1028,73 @@ function initializeLanguageSelector() {
         return;
     }
     
-    // Load saved language or default to English
-    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-    setLanguage(savedLang);
+    // Load saved language if present
+    const savedLang = localStorage.getItem('selectedLanguage');
+    // If a language was previously chosen, apply it so the UI shows in that language
+    if (savedLang) {
+        setLanguage(savedLang);
+    }
+    // NOTE: Don't show the modal here — it's shown after the loading spinner completes
+    // via initializeLoadingScreen() to ensure the spinner -> blur -> modal sequence.
     
-    // Toggle dropdown
-    langBtn.addEventListener('click', (e) => {
-        console.log('Language button clicked'); // Debug log
-        e.preventDefault();
-        e.stopPropagation();
-        const isVisible = langDropdown.classList.contains('show');
-        console.log('Dropdown currently visible:', isVisible);
-        langDropdown.classList.toggle('show');
-        console.log('Dropdown after toggle:', langDropdown.classList.contains('show'));
-    });
-    
-    // Handle language selection
-    langOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-            console.log('Language option clicked:', option.getAttribute('data-lang')); // Debug log
-            e.stopPropagation();
-            const selectedLang = option.getAttribute('data-lang');
-            setLanguage(selectedLang);
-            langDropdown.classList.remove('show');
+    // Note: Navbar language dropdown uses inline onclick handlers in HTML
+    // (defined in index.html), so no additional event listeners needed here.
+    // This prevents conflicts with modal button handling.
+}
+
+// Show/hide helpers and modal wiring for first-visit language choice
+function showLanguageModal() {
+    const modal = document.getElementById('languageModal');
+    // Smoothly show the modal using an rAF to ensure CSS transitions run
+    if (!modal) {
+        console.error('Language modal element not found in DOM');
+        return;
+    }
+
+    // If already visible, do nothing
+    if (modal.classList.contains('show')) return;
+
+    // Prepare modal and prevent scroll
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Wire buttons once (use event delegation protection via data-attr)
+    const enBtn = document.getElementById('choose-en-btn');
+    const deBtn = document.getElementById('choose-de-btn');
+
+    function wireButton(btn, lang) {
+        if (!btn) return;
+        // remove previous listeners by replacing node
+        const copy = btn.cloneNode(true);
+        btn.parentNode.replaceChild(copy, btn);
+        copy.addEventListener('click', () => {
+            setLanguage(lang);
+            hideLanguageModal();
         });
+    }
+
+    wireButton(enBtn, 'en');
+    wireButton(deBtn, 'de');
+
+    // Force a reflow then add the class on next animation frame for smooth transition
+    // This avoids the modal appearing instantly without animation on some browsers
+    // (especially after DOM changes and blur application)
+    void modal.offsetWidth; // force reflow
+    requestAnimationFrame(() => {
+        // tiny delay to ensure transitions will trigger
+        setTimeout(() => modal.classList.add('show'), 10);
     });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', () => {
-        langDropdown.classList.remove('show');
-    });
+}
+
+function hideLanguageModal() {
+    const modal = document.getElementById('languageModal');
+    if (!modal) return;
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = 'auto';
+    // remove site blur when modal hides
+    document.body.classList.remove('site-blurred');
 }
 
 // Make setLanguage function globally accessible

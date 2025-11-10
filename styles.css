@@ -1285,6 +1285,12 @@ section {
     100% { transform: rotate(360deg); }
 }
 
+/* Blur the site when modal is appearing */
+.site-blurred *:not(.language-modal):not(.language-modal *) {
+    transition: filter 300ms ease, opacity 300ms ease;
+    filter: blur(4px) brightness(0.95);
+}
+
 /* Smooth transitions for all interactive elements */
 * {
     transition: all 0.5s ease;
@@ -1473,4 +1479,97 @@ section {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #764ba2;
+}
+
+/* First-visit Language Modal */
+
+.language-modal {
+    /* Keep element present for transitions; hide visually when not active */
+    display: flex;
+    position: fixed;
+    z-index: 12000;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.0);
+    backdrop-filter: blur(0px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: background 240ms ease, backdrop-filter 240ms ease, opacity 240ms ease, visibility 240ms ease;
+}
+
+.language-modal.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+}
+
+.language-modal-dialog {
+    background: #fff;
+    max-width: 560px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    text-align: center;
+    transform: translateY(-12px) scale(0.98);
+    opacity: 0;
+    transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+}
+
+/* Hint to browser for smoother modal animation */
+.language-modal {
+    will-change: opacity, backdrop-filter;
+}
+
+.language-modal-dialog {
+    will-change: transform, opacity;
+    transform-origin: 50% 20%;
+    backface-visibility: hidden;
+}
+
+.language-modal.show .language-modal-dialog {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.language-modal-dialog h2 {
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.language-modal-text {
+    color: #666;
+    margin-bottom: 18px;
+    font-size: 1rem;
+}
+
+.modal-subtitle {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    opacity: 0.9;
+}
+
+.language-modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.language-modal-note {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+@media (max-width: 480px) {
+    .language-modal-dialog { padding: 18px; }
+    .language-modal-actions { flex-direction: column; }
 }
