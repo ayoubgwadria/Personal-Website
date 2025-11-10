@@ -723,6 +723,19 @@ section {
 .project-content h3 {
     margin-bottom: 1rem;
     color: #333;
+    /* Make long project titles more readable: reduce size and clamp to 2 lines with ellipsis */
+    font-size: 1.25rem;
+    line-height: 1.2;
+    max-height: 2.4rem; /* roughly 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* non-prefixed hint (not supported everywhere but harmless) */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .project-content p {
