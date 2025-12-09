@@ -851,6 +851,13 @@ const translations = {
         'footer-copyright': '© 2024 Ayoub Gouadria. All rights reserved.',
         
         // Experience Section - Jobs
+        'job0-title': 'Back-End Developer',
+        'job0-company': 'DEFENDR.GG – Tunis',
+        'job0-desc': 'Developed and maintained the backend architecture of the DEFENDR.GG platform using Node.js and Express.',
+        'job0-point1': 'Built scalable REST APIs ensuring data integrity and reliable communication between services.',
+        'job0-point2': 'Optimized database operations and improved system performance through query optimization and caching strategies.',
+        'job0-point3': 'Implemented new features and collaborated with the team to deliver reliable, scalable solutions.',
+        
         'job1-title': 'Full Stack Developer Intern',
         'job1-company': 'SFYF Development – Tunis',
         'job1-desc': 'Developed and optimized an e-commerce platform using Spring Boot and Angular, enhancing system speed and scalability.',
@@ -900,7 +907,10 @@ const translations = {
         'lang-arabic': 'Arabic: Native',
         'lang-french': 'French: B2 (Professional Proficiency)',
         'lang-english': 'English: B2 (Working Proficiency)',
-        'lang-german': 'German: A2–B1 (Currently Improving)'
+        'lang-german': 'German: A2–B1 (Currently Improving)',
+        
+        // Design & UX Skills
+        'skills-design': 'Design & UX'
     },
     de: {
         // Navigation
@@ -963,6 +973,13 @@ const translations = {
         'footer-copyright': '© 2024 Ayoub Gouadria. Alle Rechte vorbehalten.',
         
         // Experience Section - Jobs
+        'job0-title': 'Backend-Entwickler',
+        'job0-company': 'DEFENDR.GG – Tunis',
+        'job0-desc': 'Entwicklung und Wartung der Backend-Architektur der DEFENDR.GG-Plattform mit Node.js und Express.',
+        'job0-point1': 'Erstellung skalierbarer REST-APIs, um Datenintegrität und zuverlässige Kommunikation zwischen Services zu gewährleisten.',
+        'job0-point2': 'Optimierung von Datenbankoperationen und Verbesserung der Systemleistung durch Query-Optimierung und Caching-Strategien.',
+        'job0-point3': 'Implementierung neuer Funktionen und Zusammenarbeit mit dem Team zur Bereitstellung zuverlässiger, skalierbarer Lösungen.',
+        
         'job1-title': 'Full Stack Entwickler Praktikant',
         'job1-company': 'SFYF Development – Tunis',
         'job1-desc': 'Entwickelte und optimierte eine E-Commerce-Plattform mit Spring Boot und Angular, wodurch Systemgeschwindigkeit und Skalierbarkeit verbessert wurden.',
@@ -1012,7 +1029,10 @@ const translations = {
         'lang-arabic': 'Arabisch: Muttersprache',
         'lang-french': 'Französisch: B2 (Berufliche Kompetenz)',
         'lang-english': 'Englisch: B2 (Arbeitskompetenz)',
-        'lang-german': 'Deutsch: A2–B1 (Derzeit verbessernd)'
+        'lang-german': 'Deutsch: A2–B1 (Derzeit verbessernd)',
+        
+        // Design & UX Skills
+        'skills-design': 'Design & UX'
     }
 };
 

@@ -566,6 +566,10 @@ section {
     transform: translateY(-5px);
 }
 
+.skill-category:last-child {
+    grid-column: 2;
+}
+
 .skill-category h3 {
     display: flex;
     align-items: center;

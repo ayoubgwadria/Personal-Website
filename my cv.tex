@@ -1,0 +1,220 @@
+\documentclass[a4paper,10.5pt]{article}
+
+% -------------------
+% Packages
+% -------------------
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+
+% -------------------
+% Colors & Styles
+% -------------------
+\definecolor{primary}{RGB}{25,85,165}
+\definecolor{graytext}{RGB}{80,80,80}
+
+\titleformat{\section}
+  {\color{primary}\Large\bfseries}
+  {}{0em}{}[\titlerule]
+
+\titleformat{\subsection}
+  {\color{primary}\normalsize\bfseries}
+  {}{0em}{}
+
+\setlist[itemize]{leftmargin=*,noitemsep,topsep=2pt}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setstretch{1.05}
+
+% -------------------
+% Header Command
+% -------------------
+\newcommand{\cvheader}[7]{%
+  \begin{center}
+    {\Huge\bfseries\color{primary}#1}\\[4pt]
+    \small
+    \faMapMarker*~#2 \quad | \quad
+    \faPhone~#3 \quad | \quad
+    \faEnvelope~\href{mailto:#4}{#4} \quad | \quad
+    \faLinkedin~\href{https://#5}{#5} \quad | \quad
+    \faGlobe~\href{https://#6}{#6} \quad | \quad
+    \faGithub~\href{https://#7}{#7}
+  \end{center}
+  \vspace{8pt}
+}
+
+% -------------------
+% Custom Block
+% -------------------
+\newcommand{\cvblock}[2]{%
+  \textbf{#1} \hfill \textit{#2}\\
+}
+
+% -------------------
+% DOCUMENT START
+% -------------------
+\begin{document}
+
+% -------------------
+% HEADER
+% -------------------
+\begin{minipage}{0.64\textwidth}
+    {\Huge\bfseries\color{primary} Ayoub Gouadria}\\[20pt]
+
+    {\small
+    \begin{tabular}{@{}ll@{}}
+        \faMapMarker* & 98574 Schmalkalden, Germany — Open to relocation \\
+        \faPhone & +49 157 5722 5924 \\
+        \faEnvelope & \href{mailto:ayoubgouadriaa@gmail.com}{ayoubgouadriaa@gmail.com} \\
+        \faLinkedin & \href{https://linkedin.com/in/ayoub-gwadria-5335a2256}{linkedin.com/in/ayoub-gwadria-5335a2256} \\
+        \faGithub & \href{https://github.com/ayoubgwadria}{github.com/ayoubgwadria} \\
+        \faGlobe & \href{https://ayoubgwadria.github.io/Personal-Website}{ayoubgwadria.github.io/Personal-Website} \\
+    \end{tabular}
+    }
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+ \vspace{-5pt}
+    \begin{flushright}
+        \includegraphics[width=5.8cm,clip,keepaspectratio]{photo.png}
+    \end{flushright}
+\end{minipage}
+
+\vspace{5pt}
+% -------------------
+% TECHNICAL SKILLS
+% -------------------
+\section*{\faCode~Technical Skills}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\textbf{Languages:} & Java, Python, TypeScript, JavaScript, SQL, HTML5, CSS3 \\
+\textbf{Frontend:} & Angular, React, Tailwind CSS, Bootstrap \\
+\textbf{Backend:} & Spring Boot, Node.js, Express.js, REST APIs, Microservices \\
+\textbf{Database:} & MySQL, MongoDB, PostgreSQL, Database Optimization, SQL/NoSQL \\
+\textbf{DevOps \& Cloud:} & Docker, Kubernetes, Git, GitHub, GitLab, CI/CD, Jenkins, Postman \\
+\textbf{Security:} & JWT Authentication, Authorization, API Security, Data Integrity \\
+\textbf{Methodologies:} & Agile/Scrum, MVC, Architecture Design, System Scalability \\
+\end{tabularx}
+
+% -------------------
+% DESIGN & UX SKILLS
+% -------------------
+\section*{\faPalette~Design \& UX Skills}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\textbf{Design Tools:} & Figma, Adobe XD, Wireframing \\
+\textbf{UI/UX Design:} & User Interface Design, User Experience, Prototyping, Material Design \\
+\textbf{User Research:} & Usability Testing, User Interviews, User Stories, User-Centered Design \\
+\textbf{Design Systems:} & Design Documentation, Component Libraries, Design Principles \\
+\textbf{Editing \& Multimedia:} & Adobe Premiere, Final Cut Pro, Photoshop, Lightroom, Graphic Design \\
+\textbf{Specializations:} & Responsive Design, Software Architecture Understanding \\
+\end{tabularx}
+
+
+
+% -------------------
+% PROFESSIONAL EXPERIENCE
+% -------------------
+\section*{\faBriefcase~Professional Experience}
+
+\cvblock{Back-End Developer}{DEFENDR.GG | Sep 2023–Oct 2024, Tunis}
+\begin{itemize}
+  \item Developed and maintained the \textbf{backend architecture} of the DEFENDR.GG platform using \textbf{Node.js and Express}.
+  \item Built \textbf{scalable REST APIs} ensuring \textbf{data integrity} and reliable communication between services.
+  \item Optimized database operations and improved system performance through query optimization and caching strategies.
+  \item Implemented new features and collaborated with the team to deliver \textbf{reliable, scalable solutions}.
+\end{itemize}
+
+% -------------------
+% INTERNSHIPS
+% -------------------
+\section*{\faUserTie~Internships}
+
+\cvblock{Full Stack Developer Intern}{SFYF Development | Jun–Sep 2025, Tunis}
+\begin{itemize}
+  \item Developed a full-featured \textbf{e-commerce platform} using Spring Boot and Angular, boosting performance by \textbf{25\%} and handling \textbf{500+ transactions daily}.
+  \item Implemented \textbf{JWT-based authentication} and RESTful APIs for 6 product and payment modules, improving response time by \textbf{18\%}.
+  \item Designed a responsive \textbf{admin dashboard} used by 5+ team members to track sales, stock, and orders in real-time.
+  \item Collaborated with a \textbf{cross-functional team of 4 developers}, optimizing CI/CD pipelines and reducing deployment time by \textbf{30\%}.
+\end{itemize}
+
+\cvblock{Full Stack Developer Intern (Final Project)}{INNOVUP | Feb–Jun 2023, Ariana}
+\begin{itemize}
+  \item Created a \textbf{domestic services web platform} (MERN stack) connecting 100+ clients and providers, reducing manual booking by \textbf{60\%}.
+  \item Increased user retention by \textbf{30\%} through responsive design and optimized routing.
+  \item Deployed the app to a cloud environment ensuring \textbf{99\% uptime} and \textbf{25\% faster API response}.
+\end{itemize}
+
+\cvblock{Web Developer Intern}{TOPNET | Jul–Aug 2022, Tunis}
+\begin{itemize}
+  \item Built a \textbf{product management system} using PHP, MySQL, and Bootstrap to automate inventory workflows across 3 departments.
+  \item Reduced manual data entry by \textbf{40\%} and cut reporting time by \textbf{20 hours/month} through automation scripts.
+\end{itemize}
+
+% -------------------
+% KEY PROJECTS
+% -------------------
+\section*{\faLaptopCode~Key Projects}
+
+\cvblock{Education Management System}{Angular | Spring Boot | MySQL}
+\begin{itemize}
+  \item Developed a system for professors to manage \textbf{100+ students, payments, and attendance} across multiple classes.
+  \item Integrated \textbf{role-based access control} and calendar scheduling, improving administrative efficiency by \textbf{35\%}.
+\end{itemize}
+
+\cvblock{Loan Management Platform}{Angular | Spring Boot | MongoDB}
+\begin{itemize}
+  \item Designed dashboards for tracking \textbf{200+ loans} and repayments with automated notifications.
+  \item Optimized report generation and validation processes, cutting processing time by \textbf{35\%}.
+\end{itemize}
+
+\cvblock{Real-Time Chat Application}{Angular | Node.js | Socket.io}
+\begin{itemize}
+  \item Built a messaging platform with private groups and persistent storage for \textbf{50+ active users}.
+  \item Increased user engagement by \textbf{40\%} via live notifications and delivery tracking.
+\end{itemize}
+
+% -------------------
+% EDUCATION
+% -------------------
+\section*{\faGraduationCap~Education}
+\cvblock{Engineering Programme in Computer Science}{TEK-UP University | 2023–2025}
+Focus: Software Engineering, Full-Stack Development, Cloud Computing
+
+\cvblock{Bachelor’s Degree in Computer Science and Multimedia}{Higher Institute of Computer Science of Kef | 2020–2023}
+Focus: Web Technologies, Multimedia Systems, Databases
+
+% -------------------
+% LEADERSHIP & ACTIVITIES
+% -------------------
+\section*{\faUsers~Leadership \& Activities}
+\cvblock{Vice President – Event Management}{Tunivision Club, Higher Institute of Computer Science of Kef | 2021–2022}
+\begin{itemize}
+  \item Led \textbf{5+ student events} with \textbf{200+ participants}, increasing engagement by \textbf{25\%}.
+  \item Coordinated a 10-member team to handle event logistics, marketing, and technical setup.
+\end{itemize}
+
+\cvblock{Final Year Project Supervisor (Mentor)}{ISMAI – Kairouan}
+\begin{itemize}
+  \item Mentored a student in developing a full-stack project using \textbf{Java, Angular, and Spring Boot}.
+  \item Guided documentation and presentation, resulting in a \textbf{grade of 17.5/20} and on-time delivery.
+\end{itemize}
+
+% -------------------
+% LANGUAGES
+% -------------------
+\section*{\faLanguage~Languages}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+Arabic & Native \\
+English & Fluent \\
+French & Fluent \\
+German & A2–B1 (Currently Improving) \\
+\end{tabularx}
+
+\end{document}
