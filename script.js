@@ -905,9 +905,9 @@ const translations = {
         'languages-title': 'Languages',
         'languages-subtitle': 'Multilingual Communication',
         'lang-arabic': 'Arabic: Native',
-        'lang-french': 'French: B2 (Professional Proficiency)',
-        'lang-english': 'English: B2 (Working Proficiency)',
-        'lang-german': 'German: A2–B1 (Currently Improving)',
+        'lang-french': 'French: C1',
+        'lang-english': 'English: C1',
+        'lang-german': 'German: B1',
         
         // Design & UX Skills
         'skills-design': 'Design & UX'
@@ -1027,9 +1027,9 @@ const translations = {
         'languages-title': 'Sprachen',
         'languages-subtitle': 'Mehrsprachige Kommunikation',
         'lang-arabic': 'Arabisch: Muttersprache',
-        'lang-french': 'Französisch: B2 (Berufliche Kompetenz)',
-        'lang-english': 'Englisch: B2 (Arbeitskompetenz)',
-        'lang-german': 'Deutsch: A2–B1 (Derzeit verbessernd)',
+        'lang-french': 'Französisch: C1',
+        'lang-english': 'Englisch: C1',
+        'lang-german': 'Deutsch: B1',
         
         // Design & UX Skills
         'skills-design': 'Design & UX'
